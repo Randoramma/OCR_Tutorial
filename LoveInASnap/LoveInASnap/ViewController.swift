@@ -31,6 +31,22 @@ class ViewController: UIViewController, UITextViewDelegate, UINavigationControll
   }
   
   @IBAction func takePhoto(sender: AnyObject) {
+    view.endEditing(true)
+    moveViewDown()
+    
+    let imagePickerActionSheet = UIAlertController (title: "Upload Photo", message: nil, preferredStyle: .ActionSheet)
+    
+    if UIImagePickerController .isSourceTypeAvailable(.Camera) {
+      let cameraButton = UIAlertAction(title: "Take Photo", style: .Default, handler: { (alert) -> Void in
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .Camera
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+      })
+      
+      
+    }
+    
   }
   
   @IBAction func swapText(sender: AnyObject) {
